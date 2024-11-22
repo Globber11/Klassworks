@@ -9,6 +9,14 @@ def bubble_sort(numbers):
                 numbers[j] = temp
 
 list_ = [randint(1, 100) for _ in range(30)]
+
+count = 0
+for i in range(1, len(list_) - 1):
+    if list_[i] > list_[i - 1] and list_[i] > list_[i + 1]:
+        count += 1
+
+print("Количество элементов, которые больше своих соседей в неотсортированном списке:", count)
+
 bubble_sort(list_)
 
 unique_numbers = sorted(set(list_), reverse=True)
@@ -18,10 +26,3 @@ if len(unique_numbers) >= 3:
     print("Индекс третьего по величине числа:", list_.index(unique_numbers[2]))
 else:
     print("Недостаточно уникальных чисел для определения второго и третьего по величине.")
-
-count = 0
-for i in range(1, len(list_) - 1):
-    if list_[i] > list_[i - 1] and list_[i] > list_[i + 1]:
-        count += 1
-
-print("Количество элементов, которые больше своих соседей:", count)
