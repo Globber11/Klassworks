@@ -51,7 +51,8 @@ def cost18(key):
         'кальянчик': 500
     }
     return cost[key]
-if 2024-user_data[born_year]>=18:
-    printMenu18()
-else:
-    printMenu()
+def print_menu():
+    if 2024-user_data[born_year]>=18:
+        printMenu18()
+    else:
+        printMenu()
