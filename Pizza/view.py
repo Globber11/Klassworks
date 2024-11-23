@@ -1,3 +1,5 @@
+from model import user_data
+
 def menu(user_input):
     global products
     products = {
@@ -23,5 +25,13 @@ def menu(user_input):
     return products[user_input]
   def printMenu():
     print('Меню: ')
-    for i in range(1, 5):
+    for i in range(1, 6):
         print(f'   {i}){menu(i)}: {cost(menu(i))}')
+  def printMenu():
+    print('Меню: ')
+    for i in range(1, 7):
+        print(f'   {i}){menu18(i)}: {cost(menu18(i))}')
+if 2024-user_data[born_year]>=18:
+    printMenu18()
+else:
+    printMenu()
