@@ -1,5 +1,5 @@
 from reg_or_log import reg_and_create_id
-from view import printMenu
+from view import menu
 
 reg_and_create_id()
-printMenu()
+menu()
