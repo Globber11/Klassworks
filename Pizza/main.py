@@ -1,5 +1,3 @@
-from reg_or_log import reg_and_create_id
-from view import menu
-
-reg_and_create_id()
-print_menu()
+from controller import openPizza
+if __name__ == "__main__":
+    openPizza()
