@@ -1,7 +1,9 @@
 import json
 from random import seed, random
-
-
+from view import menu
+from view import menu18
+from view import cost
+from view import cost18
 def reg_and_create_id():
     with open("logs.txt", "a", encoding='utf-8') as file:
         file.write(f'\nНачат процесс регистрации/авторизации')
@@ -73,3 +75,20 @@ def reg_and_create_id():
         file.write(f'\nРегистрация завершена, данные: {user_data}')
         file.write(f'\n')
         file.write(f'\n')
+    return user_data['born_year']
+
+def busketSave(buskett, userIn, userNum):
+    if 2024-2000>=18:
+        if menu(userIn) in buskett:
+            buskett[buskett.index(menu(userIn))+2]+=userNum
+        else:
+            buskett.append(menu(userIn))
+            buskett.append(cost(menu(userIn)))
+            buskett.append(userNum)
+    else:
+        if menu(userIn) in buskett:
+            buskett[buskett.index(menu18(userIn))+2]+=userNum
+        else:
+            buskett.append(menu18(userIn))
+            buskett.append(cost18(menu(userIn)))
+            buskett.append(userNum)
