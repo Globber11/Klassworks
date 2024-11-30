@@ -19,6 +19,11 @@ def check(buskett, listD):
     if listD[0]==1:
         print(f'Внесено: {listD[1]}')
         print(f'Сдача: {listD[1]-moreCost}')
+    with open('check_number.txt', 'r') as file:
+        check_number = file.read()
+    print(f'Номер чека: {check_number}')
+    with open('check_number.txt', 'w') as file:
+        file.write(str(int(check_number) + 1))
     with open("logs.txt", "a", encoding='utf-8') as file:
         file.write(f'\nВыбор товаров завершён, корзина: {buskett}')
         file.write(f'\nК оплате: {moreCost}, внесено: {listD[1]}, сдача: {int(listD[1])-moreCost}')
