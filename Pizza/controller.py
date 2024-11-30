@@ -3,9 +3,11 @@ from model import busketSave
 from model import reg_and_create_id
 from view import buy
 from view import check
+
+busket = []
 def zakaz(bornn_year):
     print_menu(bornn_year)
-    busket = []
+
     try:
         print('Что вы хотели бы заказать?')
         user_input = int(input('Введите цифру соответствующую ващему выбору: '))
