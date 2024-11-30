@@ -132,3 +132,45 @@ def warehouse(product, quantity):
         return True
     else:
         return False
+products = {}
+with open('products.json', 'r', encoding='utf-8') as file:
+    data = json.load(file)
+maxProductsQuatity = {
+    'пепперони': 20,
+    'томаты': 30,
+    'сыр': 50,
+    'бекон': 25
+}
+
+def craftPizza(products):
+    print('Выберите то из чего вы хотите сделать пиццу')
+    i = 0
+    for product in products:
+        i += 1
+        if 1 < i < 6:  # Показать продукты с 2 по 5
+            print(f' {product}')
+
+    while True:
+        productName = input(f'Введите название продукта, который вы хотите добавить: ')
+        if productName not in products:
+            print("Ошибка: продукт не найден. Пожалуйста, выберите продукт из списка.")
+            continue
+        try:
+            productQuantity = int(input(f'Введите количество продукта(максимальное количество {maxProductsQuatity[productName]}): '))
+            if productQuantity <= 0:
+                print("Ошибка: количество должно быть положительным числом.")
+                continue
+            #elif warehouse(productName, productQuantity)==False:
+                #print("Ошибка: на складе не хватает этого продукта")
+                #continue
+            elif productQuantity>=maxProductsQuatity[productName]:
+                print("Ошибка: вы превысили максимальное значение этого продукта")
+                continue
+            break  # Выход из цикла, если ввод корректный
+        except ValueError:
+            print("Ошибка: введите корректное число.")
+        if input('Если хотите продолжить добавление ингредиентов введите 1, иначе любой другой символ:')==1:
+            craftPizza(data)
+        else:
+            pass
+craftPizza(data)
