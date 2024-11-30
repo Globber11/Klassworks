@@ -102,3 +102,7 @@ def busketSave(buskett, userIn, userNum, born_year):
             buskett.append(userNum)
             with open("logs.txt", "a", encoding='utf-8') as file:
                 file.write(f'\nДобавлено в корзину {userNum} {userIn}')
+
+def warehouse(poduct, quantity):
+    with open('users_data.json', 'w', encoding='utf-8') as file:
+        json.dump(users_, file, ensure_ascii=False, indent=4)
