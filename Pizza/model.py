@@ -103,6 +103,32 @@ def busketSave(buskett, userIn, userNum, born_year):
             with open("logs.txt", "a", encoding='utf-8') as file:
                 file.write(f'\nДобавлено в корзину {userNum} {userIn}')
 
-def warehouse(poduct, quantity):
-    with open('users_data.json', 'w', encoding='utf-8') as file:
-        json.dump(users_, file, ensure_ascii=False, indent=4)
+def warehouse(product, quantity):
+    def load():
+        try:
+            with open('products.json', 'r', encoding='utf-8') as file:
+                content = file.read()
+                if content.strip():
+                    return json.loads(content)
+                return []
+        except (FileNotFoundError, json.JSONDecodeError):
+            return []
+
+    def edit(products_):
+        for _ in products_:
+            if _ == product:
+                products_[product] -= quantity
+                return products_
+        return False
+
+    def save(products_):
+        with open('products.json', 'w', encoding='utf-8') as file:
+            json.dump(products_, file, ensure_ascii=False, indent=4)
+
+    products = edit(load())
+
+    if products:
+        save(products)
+        return True
+    else:
+        return False
