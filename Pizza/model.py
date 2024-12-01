@@ -79,7 +79,7 @@ def reg_and_create_id():
         file.write(f'\n')
     return user_data['born_year']
 
-def busketSave(buskett, userIn, userNum, born_year):
+def busketSave(buskett, userIn, born_year, userNum=1):
     if 2024-born_year<18:
         if menu(userIn) in buskett:
             buskett[buskett.index(menu(userIn))+2]+=userNum
@@ -133,8 +133,6 @@ def warehouse(product, quantity):
     else:
         return False
 products = {}
-with open('products.json', 'r', encoding='utf-8') as file:
-    data = json.load(file)
 maxProductsQuatity = {
     'пепперони': 20,
     'томаты': 30,
@@ -142,7 +140,9 @@ maxProductsQuatity = {
     'бекон': 25
 }
 
-def craftPizza(products):
+def craftPizza():
+    with open('products.json', 'r', encoding='utf-8') as file:
+        products = json.load(file)
     print('Выберите то из чего вы хотите сделать пиццу')
     i = 0
     for product in products:
@@ -160,17 +160,15 @@ def craftPizza(products):
             if productQuantity <= 0:
                 print("Ошибка: количество должно быть положительным числом.")
                 continue
-            #elif warehouse(productName, productQuantity)==False:
-                #print("Ошибка: на складе не хватает этого продукта")
-                #continue
+            elif warehouse(productName, productQuantity)==False:
+                print("Ошибка: на складе не хватает этого продукта")
+                continue
             elif productQuantity>=maxProductsQuatity[productName]:
                 print("Ошибка: вы превысили максимальное значение этого продукта")
                 continue
-            break  # Выход из цикла, если ввод корректный
         except ValueError:
             print("Ошибка: введите корректное число.")
-        if input('Если хотите продолжить добавление ингредиентов введите 1, иначе любой другой символ:')==1:
-            craftPizza(data)
+        if input('Если хотите продолжить добавление ингредиентов введите 1, иначе любой другой символ:')=='1':
+            continue
         else:
-            pass
-craftPizza(data)
+            break
