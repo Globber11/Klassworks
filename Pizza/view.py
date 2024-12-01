@@ -15,10 +15,12 @@ def check(buskett, listD):
         print(f"{buskett[i]}: {buskett[i+1]} x {buskett[i+2]}шт")
         moreCost+=buskett[i+1]*buskett[i+2]
     print(' ')
-    print(f'Оплачено: {moreCost}')
     if listD[0]==1:
         print(f'Внесено: {listD[1]}')
+        print(f'Оплачено: {moreCost}')
         print(f'Сдача: {listD[1]-moreCost}')
+    else:
+        print(f'Оплачено: {moreCost}')
     with open('check_number.txt', 'r') as file:
         check_number = file.read()
     print(f'Номер чека: {check_number}')
@@ -69,7 +71,8 @@ def menu(user_input):
         3: 'четыре сыра',
         4: 'ветчина и грибы',
         5: 'минипицца',
-        6: 'сок'
+        6: 'сок',
+        7: 'создать свою пиццу'
     }
     return products[user_input]
 def menu18(user_input):
@@ -80,16 +83,17 @@ def menu18(user_input):
         4: 'ветчина и грибы',
         5: 'пиво',
         6: 'виски с колой',
-        7: 'кальянчик'
+        7: 'кальянчик',
+        8: 'создать свою пиццу'
     }
     return products[user_input]
 def printMenu():
     print('Меню: ')
-    for i in range(1, 6):
+    for i in range(1, 8):
         print(f'   {i}){menu(i)}: {cost(menu(i))}')
 def printMenu18():
     print('Меню: ')
-    for i in range(1, 7):
+    for i in range(1, 9):
         print(f'   {i}){menu18(i)}: {cost18(menu18(i))}')
 def cost(key):
     cost = {
@@ -98,7 +102,8 @@ def cost(key):
         'четыре сыра':200,
         'ветчина и грибы':250,
         'минипицца': 300,
-        'сок': 350
+        'сок': 350,
+        'создать свою пиццу': 500
     }
     return cost[key]
 def cost18(key):
@@ -109,7 +114,8 @@ def cost18(key):
         'ветчина и грибы':250,
         'пиво': 300,
         'виски с колой': 350,
-        'кальянчик': 500
+        'кальянчик': 400,
+        'создать свою пиццу': 500
     }
     return cost[key]
 def print_menu(born_year):
