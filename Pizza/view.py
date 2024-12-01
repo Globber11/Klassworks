@@ -5,8 +5,6 @@ def check_decorator(func):
         print("="*30 + "\n")
     return wrapper
 
-    return products[user_input]
-
 @check_decorator
 def check(buskett, listD):
     moreCost = 0
