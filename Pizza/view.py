@@ -46,7 +46,7 @@ def buy(buskett):
     except ValueError:
         print('Введи числовое значение!!!')
         buy(buskett)
-    CardOrNal = None
+    CardOrNal = 0
     if bought==1:
         try:
             CardOrNal = int(input('Внесите сумму в рублях: '))
