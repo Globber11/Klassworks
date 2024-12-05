@@ -40,6 +40,7 @@ def buy(buskett):
     print('1)Наличные\n2)Карта')
     try:
         bought = int(input('Введите цифру соответствующую ващему выбору: '))
+        check_consumption(bought)
     except ValueError:
         print('Введи числовое значение!!!')
         buy(buskett)
