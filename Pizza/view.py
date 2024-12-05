@@ -1,4 +1,4 @@
-from model.py import check_consumption
+from model import check_consumption
 
 def check_decorator(func):
     def wrapper(*args, **kwargs):
