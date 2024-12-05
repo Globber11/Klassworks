@@ -1,3 +1,5 @@
+from model.py import check_consumption
+
 def check_decorator(func):
     def wrapper(*args, **kwargs):
         print("\n" + "="*30)
